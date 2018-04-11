@@ -55,7 +55,7 @@ function transferTokens() {
         if (error) {
             document.getElementById("transferResult").innerHTML = error;
         } else {
-            document.getElementById("transferResult").innerHTML = result;
+            document.getElementById("transferResult").innerHTML = '<a target="_blank" href="https://etherscan.io/tx/${result}">Click to view transaction on etherscan.io</a>';
         }
     });
 }
