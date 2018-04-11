@@ -51,7 +51,7 @@ function transferTokens() {
     }
     
     var transferValue = 100 * (10**decimals);
-    contractInstance.transfer('0xCB12Af58Ca2c1ea24aEfB501489ACF25a7f497bb', transferValue, function (error, result) {
+    contractInstance.transfer(recipientAddress, transferValue, function (error, result) {
         if (error) {
             document.getElementById("transferResult").innerHTML = error;
         } else {
