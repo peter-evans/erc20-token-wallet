@@ -6,6 +6,10 @@ const tokenSymbol = 'TST'
 smartContract = web3.eth.contract(abi);
 contractInstance = smartContract.at('0x3efd578b271d034a69499e4a2d933c631d44b9ad');
 
+function displayProviderInfo() {
+    document.getElementById("main").innerHTML = 'No compatible wallet provider found. Please install <a target="_blank" href="https://metamask.io/">Metamask</a>.';
+}
+
 function startApp() {
     var account = web3.eth.accounts[0];
     var accountInterval = setInterval(function() {
