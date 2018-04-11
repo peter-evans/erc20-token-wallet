@@ -25,10 +25,11 @@ function startApp() {
                 if (error) {
                     document.getElementById("tokenBalance").innerHTML = 'balanceOf error: ${err}';
                 } else {
-                    document.getElementById("tokenBalance").innerHTML = result * (10**-decimals);
+                    document.getElementById("tokenBalance").innerHTML = (result * 10**-decimals) + ' ${tokenSymbol}';
                 }
             });
 
+            document.getElementById("tokenSymbol").innerHTML = tokenSymbol;
         }
     }, 100);  
 }

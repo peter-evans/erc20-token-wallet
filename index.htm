@@ -5,32 +5,38 @@
 </head>
 <style>
 div.container {
-    width: 60%;
+    width: 50%;
     margin: auto;
     border: 1px solid gray;
+    padding: 30px;
+}
+div.panel {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+div.field-value {
+    display:inline-block;
 }
 </style>
 <body>
     <div class="container">
-
-    <header>
-       <h1>Simple ERC20 Token Wallet</h1>
-    </header>
-
-    <div class="walletForm">
-        <div id="address"></div>
-        <div id="ethBalance"></div>
-        <div id="tokenBalance"></div>
-        <input type="text" id="transferValue" />
-        <a href="#" onclick="transferTokens()">Transfer</a>
-
-        <div id="transferResult"></div>
+        <header>
+           <h1>Simple ERC20 Token Wallet</h1>
+        </header>
+        <div class="panel">
+            <div class="field">Wallet Address: <div class="field-value" id="address">[address]</div></div>
+            <div class="field">ETH balance: <div class="field-value" id="ethBalance">[ethBalance]</div></div>
+            <div class="field">Token balance: <div class="field-value" id="tokenBalance">[tokenBalance]</div></div>
+        </div>
+        <div class="panel">
+            <div class="field">Send <input type="text" id="transferValue" size="10" /> <div class="field-value" id="tokenSymbol">[tokenSymbol]</div> tokens</div>
+            <div class="field">To address: <input type="text" id="recipientAddress" size="50" /></div>
+            <a style="float: right" href="#" onclick="transferTokens()">Transfer</a>
+        </div>
+        <div class="panel">
+            <div id="transferResult"></div>
+        </div>
     </div>
-
-    <footer>footer</footer>
-
-    </div>
-
     <script src="web3/dist/web3.min.js"></script>
     <script src="index.js"></script>
     <script>
