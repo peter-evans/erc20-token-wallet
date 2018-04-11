@@ -12,7 +12,7 @@ function displayProviderInfo() {
 
 function startApp() {
     document.getElementById("tokenSymbol").innerHTML = tokenSymbol;
-    var account = '';
+    var account = 'undefined';
     var accountInterval = setInterval(function() {
         if (typeof web3.eth.accounts[0] == 'undefined') {
             document.getElementById("address").innerHTML = '';
