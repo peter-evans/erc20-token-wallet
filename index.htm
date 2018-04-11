@@ -2,22 +2,8 @@
 <html>
 <head>
     <title>Simple ERC20 Token Wallet</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
 </head>
-<style>
-div.container {
-    width: 50%;
-    margin: auto;
-    border: 1px solid gray;
-    padding: 30px;
-}
-div.panel {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-div.field-value {
-    display:inline-block;
-}
-</style>
 <body>
     <div class="container">
         <header>
@@ -29,9 +15,9 @@ div.field-value {
             <div class="field">Token balance: <div class="field-value" id="tokenBalance">[tokenBalance]</div></div>
         </div>
         <div class="panel">
-            <div class="field">Send <input type="text" id="transferValue" size="10" /> <div class="field-value" id="tokenSymbol">[tokenSymbol]</div> tokens</div>
+            <div class="field">Send <input type="text" id="transferValue" size="10" /> <div class="field-value" id="tokenSymbol">[tokenSymbol]</div></div>
             <div class="field">To address: <input type="text" id="recipientAddress" size="50" /></div>
-            <a style="float: right" href="#" onclick="transferTokens()">Transfer</a>
+            <a class="btn" style="float: right" href="#" onclick="transferTokens()">Transfer</a>
         </div>
         <div class="panel">
             <div id="transferResult"></div>

@@ -1,0 +1,24 @@
+div.container {
+    width: 50%;
+    margin: auto;
+    border: 1px solid gray;
+    padding: 30px;
+}
+div.panel {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+div.field-value {
+    display:inline-block;
+}
+.btn {
+  background: #4caf50;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+}
+.btn:hover {
+  background: #3e8e41;
+  text-decoration: none;
+}
