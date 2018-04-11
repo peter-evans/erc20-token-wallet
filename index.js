@@ -35,13 +35,21 @@ function startApp() {
 }
 
 function transferTokens() {
+    document.getElementById("transferResult").innerHTML = '';
+    
     var transferValue = document.getElementById("transferValue").value;
     var regex = /[0-9]|\./;
-    if( !isNumeric(transferValue) ) {
+    if(!isNumeric(transferValue)) {
         document.getElementById("transferResult").innerHTML = 'Invalid transfer value';
         return;
     }
 
+    var recipientAddress = document.getElementById("recipientAddress").value;
+    if (!recipientAddress || !web3.utils.isAddress(recipientAddress)) {
+        document.getElementById("transferResult").innerHTML = 'Invalid ethereum address';
+        return;        
+    }
+    
     var transferValue = 100 * (10**decimals);
     contractInstance.transfer('0xCB12Af58Ca2c1ea24aEfB501489ACF25a7f497bb', transferValue, function (error, result) {
         if (error) {
