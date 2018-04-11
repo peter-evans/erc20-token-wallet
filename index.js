@@ -11,12 +11,14 @@ function displayProviderInfo() {
 }
 
 function startApp() {
+    document.getElementById("tokenSymbol").innerHTML = tokenSymbol;
     var account = 'undefined';
     var accountInterval = setInterval(function() {
         if (typeof web3.eth.accounts[0] == 'undefined') {
             document.getElementById("address").innerHTML = '';
             document.getElementById("ethBalance").innerHTML = '';
             document.getElementById("tokenBalance").innerHTML = '';
+            document.getElementById("transferResult").innerHTML = '';
         } else if (web3.eth.accounts[0] !== account) {
             account = web3.eth.accounts[0];
             document.getElementById("address").innerHTML = account;
@@ -36,8 +38,6 @@ function startApp() {
                     document.getElementById("tokenBalance").innerHTML = (result * 10**-decimals) + ' ' + tokenSymbol;
                 }
             });
-
-            document.getElementById("tokenSymbol").innerHTML = tokenSymbol;
         }
     }, 100);  
 }
