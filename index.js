@@ -13,7 +13,11 @@ function displayProviderInfo() {
 function startApp() {
     var account = 'undefined';
     var accountInterval = setInterval(function() {
-        if (web3.eth.accounts[0] !== account) {
+        if (account == 'undefined') {
+            document.getElementById("address").innerHTML = '';
+            document.getElementById("ethBalance").innerHTML = '';
+            document.getElementById("tokenBalance").innerHTML = '';
+        } else if (web3.eth.accounts[0] !== account) {
             account = web3.eth.accounts[0];
             document.getElementById("address").innerHTML = account;
 
