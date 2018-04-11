@@ -50,7 +50,7 @@ function transferTokens() {
         return;        
     }
 
-    var transferValue = 100 * 10**decimals;
+    transferValue = transferValue * 10**decimals;
     contractInstance.transfer(recipientAddress, transferValue, function (error, result) {
         if (error) {
             document.getElementById("transferResult").innerHTML = error;
