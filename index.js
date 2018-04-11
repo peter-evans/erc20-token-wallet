@@ -12,9 +12,10 @@ function displayProviderInfo() {
 
 function startApp() {
     document.getElementById("tokenSymbol").innerHTML = tokenSymbol;
-    var account = 'undefined';
+    var account = '';
     var accountInterval = setInterval(function() {
         if (typeof web3.eth.accounts[0] == 'undefined') {
+            account = '';
             document.getElementById("address").innerHTML = '';
             document.getElementById("ethBalance").innerHTML = '';
             document.getElementById("tokenBalance").innerHTML = '';
