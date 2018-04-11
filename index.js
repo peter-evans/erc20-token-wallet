@@ -7,39 +7,51 @@ smartContract = web3.eth.contract(abi);
 contractInstance = smartContract.at('0x3efd578b271d034a69499e4a2d933c631d44b9ad');
 
 function startApp() {
-  var account = web3.eth.accounts[0];
-  var accountInterval = setInterval(function() {
-    if (web3.eth.accounts[0] !== account) {
-      account = web3.eth.accounts[0];
-      document.getElementById("address").innerHTML = account;
+    var account = web3.eth.accounts[0];
+    var accountInterval = setInterval(function() {
+        if (web3.eth.accounts[0] !== account) {
+            account = web3.eth.accounts[0];
+            document.getElementById("address").innerHTML = account;
 
-      web3.eth.getBalance(account, function (error, result) {
-        if (error) {
-            document.getElementById("balance").innerHTML = `getBalance error: ${err}`;
-        } else {
-            document.getElementById("balance").innerHTML = web3.fromWei(result);
+            web3.eth.getBalance(account, function (error, result) {
+                if (error) {
+                    document.getElementById("ethBalance").innerHTML = 'getBalance error: ${err}';
+                } else {
+                    document.getElementById("ethBalance").innerHTML = web3.fromWei(result);
+                }
+            });
+
+            contractInstance.balanceOf.call(account, function (error, result) {
+                if (error) {
+                    document.getElementById("tokenBalance").innerHTML = 'balanceOf error: ${err}';
+                } else {
+                    document.getElementById("tokenBalance").innerHTML = result * (10**-decimals);
+                }
+            });
+
         }
-      });
-
-      contractInstance.balanceOf.call(account, function (error, result) {
-        if (error) {
-            document.getElementById("tokenBalance").innerHTML = `balanceOf error: ${err}`;
-        } else {
-            document.getElementById("tokenBalance").innerHTML = result * (10**-decimals);
-        }
-      });
-
-    }
-  }, 100);  
+    }, 100);  
 }
 
 function transferTokens() {
-  var transferValue = 100 * (10**decimals);
-  contractInstance.transfer('0xCB12Af58Ca2c1ea24aEfB501489ACF25a7f497bb', transferValue, function (error, result) {
-    if (error) {
-      document.getElementById("transferResult").innerHTML = error;
-    } else {
-        document.getElementById("transferResult").innerHTML = result;
+    var transferValue = document.getElementById("transferValue").value;
+    var regex = /[0-9]|\./;
+    if( !isNumeric(transferValue) ) {
+        document.getElementById("transferResult").innerHTML = 'Invalid transfer value';
+        return;
     }
-  });
+
+    var transferValue = 100 * (10**decimals);
+    contractInstance.transfer('0xCB12Af58Ca2c1ea24aEfB501489ACF25a7f497bb', transferValue, function (error, result) {
+        if (error) {
+            document.getElementById("transferResult").innerHTML = error;
+        } else {
+            document.getElementById("transferResult").innerHTML = result;
+        }
+    });
+}
+
+function isNumeric(value) {
+    var regex = /[0-9]|\./;
+    return regex.test(value);
 }
