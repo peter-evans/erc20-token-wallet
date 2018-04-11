@@ -3,14 +3,32 @@
 <head>
     <title>Simple ERC20 Token Wallet</title>
 </head>
+<style>
+div.container {
+    width: 60%;
+    border: 1px solid gray;
+}
+</style>
 <body>
-    <div id="address"></div>
-    <div id="ethBalance"></div>
-    <div id="tokenBalance"></div>
-    <input type="text" id="transferValue" />
-    <a href="#" onclick="transferTokens()">Transfer</a>
+    <div class="container">
 
-    <div id="transferResult"></div>
+    <header>
+       <h1>Simple ERC20 Token Wallet</h1>
+    </header>
+
+    <div class="walletForm">
+        <div id="address"></div>
+        <div id="ethBalance"></div>
+        <div id="tokenBalance"></div>
+        <input type="text" id="transferValue" />
+        <a href="#" onclick="transferTokens()">Transfer</a>
+
+        <div id="transferResult"></div>
+    </div>
+
+    <footer>footer</footer>
+
+    </div>
 
     <script src="web3/dist/web3.min.js"></script>
     <script src="index.js"></script>
