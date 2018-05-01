@@ -53,7 +53,10 @@ function transferTokens() {
     }
 
     var recipientAddress = document.getElementById("recipientAddress").value;
-    if (!recipientAddress || !isAddress(recipientAddress)) {
+    if (!recipientAddress.startsWith("0x")) {
+        recipientAddress = '0x' + recipientAddress;
+    }
+    if (!recipientAddress || !web3.isAddress(recipientAddress)) {
         document.getElementById("transferResult").innerHTML = 'Invalid ethereum address';
         return;        
     }
@@ -72,24 +75,3 @@ function isNumeric(value) {
     var regex = /[0-9]|\./;
     return regex.test(value);
 }
-
-function isAddress(address) {
-    if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) {
-        return false;
-    } else if (/^(0x)?[0-9a-f]{40}$/.test(address) || /^(0x)?[0-9A-F]{40}$/.test(address)) {
-        return true;
-    } else {
-        return isChecksumAddress(address);
-    }
-};
-
-function isChecksumAddress(address) {
-    address = address.replace('0x','');
-    var addressHash = sha3(address.toLowerCase());
-    for (var i = 0; i < 40; i++ ) {
-        if ((parseInt(addressHash[i], 16) > 7 && address[i].toUpperCase() !== address[i]) || (parseInt(addressHash[i], 16) <= 7 && address[i].toLowerCase() !== address[i])) {
-            return false;
-        }
-    }
-    return true;
-};
