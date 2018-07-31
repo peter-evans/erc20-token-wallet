@@ -11,7 +11,7 @@ A compatible wallet provider is required, such as MetaMask.
 
 The wallet connects to the [ERC-20 Test Standard Token (TST)](https://github.com/uzyn/ERC20-TST) smart contract for testing purposes. The smart contract the wallet interfaces with can be changed by editing the following lines in [index.js](index.js).
 
-```
+```javascript
 const abi = JSON.parse(
   '[...]'
 );
